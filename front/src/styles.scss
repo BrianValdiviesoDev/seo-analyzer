@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+body{
+    background-color: #071a2b;
+    color: #00d9ff;
+    margin: 0px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.background{
+    background-image: url('space.webp');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+    margin-top: 10rem;
+}
+
+table{
+    border-spacing: 0px;
+    max-width: 100%;
+}
+
+.dashboard{
+    display: flex;
+    flex-flow: row wrap;
+
+    section{
+        display: flex;
+        flex-flow: column wrap;
+        width: 32vw;
+        align-items: center;
+
+        @media only screen and (max-width: 768px){
+            width: 100vw;
+        }
+
+        .card{
+            background-color: #00d9ff41;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            margin: 2rem;
+            height: fit-content;
+            width: 28vw;
+            color: white;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+
+            @media only screen and (max-width: 768px){
+                width: 75vw;
+                margin: 1rem;
+            }
+
+            a{
+                color:white;
+
+                &:hover {
+                    color: #00d9ff;
+                }
+            }
+            
+            .metric{
+                font-size: 3rem;
+                text-align: center;
+            }
+
+            .chart{
+                margin: 1rem;
+
+            }
+
+            .link-container{
+                max-width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        tr{
+            background-color: #ffffff3a;
+        }
+        td{
+            padding: 0.3rem;
+        }
+
+        .label{
+            background-color: #00d9ff;
+            color: white;
+            margin-right: 2px;
+        }
+
+        .heading-row{
+            color: white;
+
+            td{
+                padding: 0.5rem;
+            }
+        }
+
+        .heading-label{
+            background-color: white;
+            color: #00d9ff;
+        }
+
+        .check{
+            display: flex;
+            align-items: center;
+            width: 70%;
+            .icon{
+                width: 2rem;
+                height: 2rem;
+                margin-right: 0.5rem;
+    
+                &.green{
+                    svg{
+                        color: green;
+                    }
+                }
+
+                &.red{
+                    svg{
+                        color: red;
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+.input-icon{
+    display: flex;
+    margin-bottom: 1rem;
+    
+    input{
+        margin: 0px;
+    }
+
+    .icon{
+        cursor: pointer;
+        background-color: #00d9ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px 5px 5px 0px;
+        padding: 0.3rem;
+        svg{
+            width: 1.5rem;
+            color: white;
+        }
+    }
+}
+
+
+button{
+    background-color: transparent;
+    border: 1px solid #00d9ff;
+    border-radius: 10%;
+    padding: 0.5rem;
+    color: #00d9ff;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #00d9ff;
+        color: white;
+    }
+}
+
+input{
+    background-color: transparent;
+    border:0px;
+    border-bottom: 1px solid #00d9ff;
+    color: white;
+    padding: 0.4rem;
+    width: 100%;
+    margin: 0.5rem;
+    
+    &:focus{
+        outline: none;
+        background-color: #ffffff3a;
+    }
+}
