@@ -1,16 +1,18 @@
 import { ScrapperResponse, PageSpeedResponse } from "./interfaces";
 import axios from "axios";
 
+const api_url = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 export const readUrl = async (url: string): Promise<ScrapperResponse> => {
   const response = await axios.get(
-    `${import.meta.env.VITE_API_URL}/readurl?url=${url}`
+    `${api_url}/readurl?url=${url}`
   );
   return response.data;
 };
 
 export const pageSpeed = async (url: string): Promise<PageSpeedResponse> => {
   const response = await axios.get(
-    `${import.meta.env.VITE_API_URL}/pagespeed?url=${url}`
+    `${api_url}/pagespeed?url=${url}`
   );
   return response.data;
 };
@@ -18,7 +20,7 @@ export const pageSpeed = async (url: string): Promise<PageSpeedResponse> => {
 export const checkSitemap = async (url: string): Promise<string[]> => {
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/sitemap?url=${url}`
+      `${api_url}/sitemap?url=${url}`
     );
     return response.data;
   } catch (e) {
@@ -29,7 +31,7 @@ export const checkSitemap = async (url: string): Promise<string[]> => {
 export const checkRobots = async (url: string): Promise<string> => {
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/robots?url=${url}`
+      `${api_url}/robots?url=${url}`
     );
 
     return response.data;

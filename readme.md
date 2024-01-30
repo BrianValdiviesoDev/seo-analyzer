@@ -5,8 +5,8 @@
 
 This web project allows you to insert a URL and perform web scraping followed by basic SEO analysis. The application consists of two main parts: the frontend built in ReactJS and the API developed in NodeJS with ExpressJS.
 
-![screely-1698922914697](https://github.com/BrianValdiviesoDev/seo-analyzer/assets/108539644/1f87a141-a82e-493b-9a30-965d3ccdcb5d)
-![screely-1698922971104](https://github.com/BrianValdiviesoDev/seo-analyzer/assets/108539644/2b2ca511-08c7-4820-b650-656ccad8a57d)
+<img width="45%" src="https://github.com/BrianValdiviesoDev/seo-analyzer/assets/108539644/1f87a141-a82e-493b-9a30-965d3ccdcb5d"/>
+<img width="45%" src="https://github.com/BrianValdiviesoDev/seo-analyzer/assets/108539644/2b2ca511-08c7-4820-b650-656ccad8a57d"/>
 
 ## Folder Structure
 
@@ -15,49 +15,6 @@ This web project allows you to insert a URL and perform web scraping followed by
 
 ## Installation and Setup
 
-Below are the steps to run this project in your local environment:
-
-### Frontend (ReactJS)
-
-1. Open a terminal in the `front/` folder.
-
-2. Install the dependencies using npm or yarn:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the app:
-
-   ```bash
-   npm run start
-   ```
-
-#### Environment variables
-
-**VITE_API_URL**: url to api project, normally http://localhost:3001
-
-### API (ExpressJS)
-
-1. Open a terminal in the `api/` folder.
-
-2. Install the dependencies using npm or yarn:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the app:
-
-   ```bash
-   npm run start
-   ```
-
-#### Environment variables
-
-**GOOGLE_API_KEY**: your google API key for use Page Speed Insights
-
-(optional) **PORT**: port to listen. If you don't set this variables, by default Express uses port 3000.
 
 ## Usage
 

@@ -10,8 +10,15 @@ import {
 import { parse } from "node-html-parser";
 import axios from "axios";
 
+const startBrowser = async () => {
+  return await puppeteer.launch({
+    headless: true,
+    args: [`--no-sandbox`, `--headless`, `--disable-gpu`, `--disable-dev-shm-usage`],
+  })
+}
+
 const readUrl = async (url: string): Promise<ScrapperResponse> => {
-  const browser = await puppeteer.launch();
+  const browser = await startBrowser();
   const page = await browser.newPage();
   await page.goto(url);
   const html = await page.content();
@@ -106,7 +113,7 @@ const pageSpeedQuery = async (
 };
 
 const readSitemap = async (url: string): Promise<string[]> => {
-  const browser = await puppeteer.launch();
+  const browser = await startBrowser();
   const page = await browser.newPage();
   await page.goto(`${url}/sitemap.xml`);
   const html = await page.content();
@@ -124,7 +131,7 @@ const readSitemap = async (url: string): Promise<string[]> => {
 };
 
 const readRobots = async (url: string): Promise<string> => {
-  const browser = await puppeteer.launch();
+  const browser = await startBrowser();
   const page = await browser.newPage();
   await page.goto(`${url}/robots.txt`);
   const html = await page.content();
