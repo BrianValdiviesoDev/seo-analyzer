@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  api:
+    image: seo-analyzer-api:latest
+    ports:
+      - 3000:3000
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - PORT:3000
+    networks:
+      - seo-analyzer-networks
+  
+  front:
+    image: seo-analyzer-front:latest
+    ports:
+      - 4000:4000
+    environment:
+      - VITE_API_URL=http://api:3000
+      - VITE_APP_PORT=4000
+    networks:
+      - seo-analyzer-network
+
+networks:
+  seo-analyzer-network:
+    driver: bridge
