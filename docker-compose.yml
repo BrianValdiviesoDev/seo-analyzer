@@ -1,18 +1,22 @@
-version: '3'
+version: "3"
 
 services:
   api:
-    image: seo-analyzer-api:latest
+    build:
+      context: ./api
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
       - PORT:3000
     networks:
-      - seo-analyzer-networks
-  
+      - seo-analyzer-network
+
   front:
-    image: seo-analyzer-front:latest
+    build:
+      context: ./front
+      dockerfile: Dockerfile
     ports:
       - 4000:4000
     environment:

@@ -1,7 +1,7 @@
 # Usa la imagen de Node para la aplicación ReactJS
 FROM node:18
 
-ENV GOOGLE_API_KEY=${GOOGLE_API_KEY}
+#ENV GOOGLE_API_KEY=${GOOGLE_API_KEY}
 
 # The /app directory should act as the main application directory
 WORKDIR /app
@@ -24,9 +24,4 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 3000
-
-
-EXPOSE ${PORT}
-
-CMD [ "npm", "run", "start" ]
+CMD ["node", "dist/app.js"]
