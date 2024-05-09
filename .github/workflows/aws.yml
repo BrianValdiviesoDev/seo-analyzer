@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  deploy-api:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -33,9 +33,20 @@ jobs:
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG api/
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          echo "image=$REGISTRY/$REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to ECS
-        run: aws ecs update-service --cluster testing --service test-seo-api --force-new-deployment
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@c804dfbdd57f713b6c079302a4c01db7017a36fc
+        with:
+          task-definition: .aws/api.task-definition.json
+          container-name: seo-analyzer-api
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@df9643053eda01f169e64a0e60233aacca83799a
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: test-seo-api
+          cluster: testing
+          wait-for-service-stability: true
